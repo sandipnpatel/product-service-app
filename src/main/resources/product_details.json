@@ -1,0 +1,8 @@
+{
+  "name": "Orange savings account",
+  "id": "12",
+  "interestRate": "4.3",
+  "amount": "1400",
+  "maturityAmount": "500",
+  "accountNumber": "12123231"
+}
