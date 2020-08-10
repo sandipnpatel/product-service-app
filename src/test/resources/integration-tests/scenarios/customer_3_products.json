@@ -1,0 +1,12 @@
+[
+  {
+    "id":7,
+    "name":"p_saving_mortgage",
+    "group":"pg_mortgage"
+  },
+  {
+    "id":9,
+    "name":"p_annuity_mortgage",
+    "group":"pg_mortgage"
+  }
+]

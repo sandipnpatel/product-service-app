@@ -1,0 +1,17 @@
+[
+  {
+    "id":1,
+    "name":"p_orange_savings",
+    "group":"pg_savings"
+  },
+  {
+    "id":4,
+    "name":"p_bonus_savings",
+    "group":"pg_savings"
+  },
+  {
+    "id":6,
+    "name":"p_green_savings",
+    "group":"pg_savings"
+  }
+]
