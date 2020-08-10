@@ -23,6 +23,7 @@
         <hibernate-validation.version>6.0.11.Final</hibernate-validation.version>
         <springfox.version>2.9.2</springfox.version>
 
+        <owasp-dependency-check-maven.version>5.2.2</owasp-dependency-check-maven.version>
         <jacoco.maven.plugin.version>0.8.5</jacoco.maven.plugin.version>
         <jacoco.skip.instrument>false</jacoco.skip.instrument>
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
@@ -234,6 +235,26 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>${owasp-dependency-check-maven.version}</version>
+                <configuration>
+                    <suppressionFiles>
+                        <suppressionFile>.mvn/owasp-suppressions.xml</suppressionFile>
+                    </suppressionFiles>
+                    <failBuildOnCVSS>11</failBuildOnCVSS>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        -->
         </plugins>
     </build>
 
