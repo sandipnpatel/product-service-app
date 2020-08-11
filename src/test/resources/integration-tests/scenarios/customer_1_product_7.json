@@ -1,0 +1,10 @@
+[
+  {
+    "id":7,
+    "name":"p_saving_mortgage",
+    "accountNumber":"1234567896",
+    "interestRate":5.2,
+    "amount":7000,
+    "maturityAmount":7030
+  }
+]

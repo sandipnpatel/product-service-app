@@ -7,21 +7,19 @@ import com.avengers.hackathon.bean.Product;
 import com.avengers.hackathon.bean.ProductGroup;
 import com.avengers.hackathon.repository.CustomerProductRepository;
 import com.avengers.hackathon.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@AllArgsConstructor
 @Service
 public class ProductService {
 
-    @Autowired
-    private CustomerProductRepository customerProductRepository;
-
-    @Autowired
-    private ProductRepository productRepository;
+    private final CustomerProductRepository customerProductRepository;
+    private final ProductRepository productRepository;
 
     public List<Product> getCustomerProducts(Long customerId) {
 

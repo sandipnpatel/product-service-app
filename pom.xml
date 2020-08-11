@@ -11,8 +11,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.1.RELEASE</version>
-        <relativePath/>
+        <version>2.3.2.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <properties>
@@ -26,7 +26,7 @@
         <owasp-dependency-check-maven.version>5.2.2</owasp-dependency-check-maven.version>
         <jacoco.maven.plugin.version>0.8.5</jacoco.maven.plugin.version>
         <jacoco.skip.instrument>false</jacoco.skip.instrument>
-        <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR7</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -99,6 +99,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.spockframework</groupId>

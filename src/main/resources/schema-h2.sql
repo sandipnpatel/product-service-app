@@ -11,7 +11,7 @@ create table PRODUCT
  ID NUMBER(10) not null,
  PRODUCT_GROUP VARCHAR2(30) not null,
  NAME VARCHAR2(50) not null,
- INTEREST_RATE NUMBER(10) null,
+ INTEREST_RATE DECIMAL null,
  PRIMARY KEY(ID)
 );
 

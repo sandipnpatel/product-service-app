@@ -1,0 +1,10 @@
+[
+  {
+    "id":3,
+    "name":"p_unicef_savings",
+    "accountNumber":"1234567892",
+    "interestRate":2.5,
+    "amount":3000,
+    "maturityAmount":3090
+  }
+]

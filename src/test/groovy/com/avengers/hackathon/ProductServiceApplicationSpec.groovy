@@ -50,11 +50,31 @@ class ProductServiceApplicationSpec extends Specification {
 
 
         where:
-        scenario        | requestUri                 | statusCode | responseFileName           | ignoredEntries
-        "Valid Customer 1 all product request" | "/v1/customers/1/products" | 200        | "customer_1_products.json" | ""
-        "Valid Customer 2 all product request" | "/v1/customers/2/products" | 200        | "customer_2_products.json" | ""
-        "Valid Customer 3 all product request" | "/v1/customers/3/products" | 200        | "customer_3_products.json" | ""
-        "Valid Customer 4 all product request" | "/v1/customers/4/products" | 200        | "customer_4_products.json" | ""
+        scenario                               | requestUri                  | statusCode | responseFileName
+        "Valid Customer 1 all product request" | "/v1/customer/1/products"   | 200        | "customer_1_products.json"
+        "Valid Customer 2 all product request" | "/v1/customer/2/products"   | 200        | "customer_2_products.json"
+        "Valid Customer 3 all product request" | "/v1/customer/3/products"   | 200        | "customer_3_products.json"
+        "Valid Customer 4 all product request" | "/v1/customer/4/products"   | 200        | "customer_4_products.json"
+        "Valid Customer 1 product 1 request"   | "/v1/customer/1/product/1"  | 200        | "customer_1_product_1.json"
+        "Valid Customer 1 product 2 request"   | "/v1/customer/1/product/2"  | 200        | "customer_1_product_2.json"
+        "Valid Customer 1 product 3 request"   | "/v1/customer/1/product/3"  | 200        | "customer_1_product_3.json"
+        "Valid Customer 1 product 4 request"   | "/v1/customer/1/product/4"  | 200        | "customer_1_product_4.json"
+        "Valid Customer 1 product 5 request"   | "/v1/customer/1/product/5"  | 200        | "customer_1_product_5.json"
+        "Valid Customer 1 product 6 request"   | "/v1/customer/1/product/6"  | 200        | "customer_1_product_6.json"
+        "Valid Customer 1 product 7 request"   | "/v1/customer/1/product/7"  | 200        | "customer_1_product_7.json"
+        "Valid Customer 1 product 8 request"   | "/v1/customer/1/product/8"  | 200        | "customer_1_product_8.json"
+        "Valid Customer 1 product 9 request"   | "/v1/customer/1/product/9"  | 200        | "customer_1_product_9.json"
+        "Valid Customer 1 product 10 request"  | "/v1/customer/1/product/10" | 200        | "customer_1_product_10.json"
+        "Valid Customer 1 product 11 request"  | "/v1/customer/1/product/11" | 200        | "customer_1_product_11.json"
+        "Valid Customer 1 product 12 request"  | "/v1/customer/1/product/12" | 200        | "customer_1_product_12.json"
+        "Valid Customer 1 product 13 request"  | "/v1/customer/1/product/13" | 200        | "customer_1_product_13.json"
+        "Valid Customer 1 product 14 request"  | "/v1/customer/1/product/14" | 200        | "customer_1_product_14.json"
+        "Valid Customer 2 product 1 request"   | "/v1/customer/2/product/1"  | 200        | "customer_2_product_1.json"
+        "Valid Customer 2 product 4 request"   | "/v1/customer/2/product/4"  | 200        | "customer_2_product_4.json"
+        "Valid Customer 2 product 6 request"   | "/v1/customer/2/product/6"  | 200        | "customer_2_product_6.json"
+        "Valid Customer 3 product 7 request"   | "/v1/customer/3/product/7"  | 200        | "customer_3_product_7.json"
+        "Valid Customer 3 product 9 request"   | "/v1/customer/3/product/9"  | 200        | "customer_3_product_9.json"
+        "Valid Customer 4 product 12 request"  | "/v1/customer/4/product/12" | 200        | "customer_4_product_12.json"
 
     }
 

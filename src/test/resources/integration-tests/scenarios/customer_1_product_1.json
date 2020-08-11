@@ -1,0 +1,10 @@
+[
+  {
+    "id":1,
+    "name":"p_orange_savings",
+    "accountNumber":"1234567890",
+    "interestRate":3.5,
+    "amount":1000,
+    "maturityAmount":1050
+  }
+]

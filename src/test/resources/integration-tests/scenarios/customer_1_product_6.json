@@ -1,0 +1,10 @@
+[
+  {
+    "id":6,
+    "name":"p_green_savings",
+    "accountNumber":"1234567895",
+    "interestRate":3.9,
+    "amount":6000,
+    "maturityAmount":6340
+  }
+]

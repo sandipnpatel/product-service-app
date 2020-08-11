@@ -1,0 +1,10 @@
+[
+  {
+    "id":2,
+    "name":"p_child_savings",
+    "accountNumber":"1234567891",
+    "interestRate":4.1,
+    "amount":2000,
+    "maturityAmount":2060
+  }
+]

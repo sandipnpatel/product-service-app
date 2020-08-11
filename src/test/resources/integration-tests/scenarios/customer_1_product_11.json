@@ -1,0 +1,10 @@
+[
+  {
+    "id":11,
+    "name":"p_payments_account",
+    "accountNumber":"1234567811",
+    "interestRate":1.8,
+    "amount":11000,
+    "maturityAmount":11230
+  }
+]
