@@ -1,5 +1,6 @@
 package com.avengers.hackathon.service;
 
+import com.avengers.hackathon.exception.ProductNotFoundException;
 import com.avengers.hackathon.model.CustomerProductMapping;
 import com.avengers.hackathon.model.ProductEntity;
 import com.avengers.hackathon.bean.CustomerProduct;
@@ -45,7 +46,7 @@ public class ProductService {
 
         return CustomerProduct.builder()
                 .id(customerProductMapping.getCustomerProductId().getProductId())
-                .name(productEntity.map(ProductEntity::getName).orElseThrow(() -> new RuntimeException("Invalid Product Id:"+customerProductMapping.getCustomerProductId().getProductId())))
+                .name(productEntity.map(ProductEntity::getName).orElseThrow(() -> new ProductNotFoundException("Product not found with productId:"+customerProductMapping.getCustomerProductId().getProductId())))
                 .accountNumber(customerProductMapping.getAccountNumber())
                 .interestRate(productEntity.get().getInterestRate())
                 .amount(customerProductMapping.getAmount())

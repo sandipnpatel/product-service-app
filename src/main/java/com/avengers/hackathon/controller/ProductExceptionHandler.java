@@ -1,5 +1,7 @@
 package com.avengers.hackathon.controller;
 
+import com.avengers.hackathon.exception.InvalidGroupNameException;
+import com.avengers.hackathon.exception.ProductNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,5 +25,13 @@ public class ProductExceptionHandler extends ResponseEntityExceptionHandler {
             ConstraintViolationException e, WebRequest request) {
         log.error("ConstraintViolationException occurred: ", e);
         return handleExceptionInternal(e, e.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler({ProductNotFoundException.class, InvalidGroupNameException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    protected ResponseEntity<Object> handleProductException(
+            ConstraintViolationException e, WebRequest request) {
+        log.error("Exception occurred: ", e);
+        return handleExceptionInternal(e, e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
     }
 }
