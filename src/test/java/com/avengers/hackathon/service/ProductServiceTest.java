@@ -3,6 +3,8 @@ package com.avengers.hackathon.service;
 import com.avengers.hackathon.bean.CustomerProduct;
 import com.avengers.hackathon.bean.Product;
 import com.avengers.hackathon.bean.ProductGroup;
+import com.avengers.hackathon.exception.InvalidGroupNameException;
+import com.avengers.hackathon.exception.ProductNotFoundException;
 import com.avengers.hackathon.model.CustomerProductId;
 import com.avengers.hackathon.model.CustomerProductMapping;
 import com.avengers.hackathon.model.ProductEntity;
@@ -11,6 +13,7 @@ import com.avengers.hackathon.repository.ProductRepository;
 import com.google.common.collect.Lists;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -129,5 +132,24 @@ public class ProductServiceTest {
         List<CustomerProduct> actual = productService.getCustomerProducts(1L, 2L);
 
         Assert.assertEquals(0, actual.size());
+    }
+
+    @Test
+    @DisplayName("Should throw ProductNotFoundException if ProductEntity not found from repository..")
+    public void testGetCustomerProducts_shouldThrowProductNotFoundExceptionIfProductsNotFoundFromRepository() {
+        List<CustomerProductMapping> customerProductMappings = Lists.newArrayList(CustomerProductMapping.builder()
+                .customerProductId(CustomerProductId.builder().customerId(1L).productId(2L).build())
+                .accountNumber("1234567890")
+                .amount(BigDecimal.valueOf(1000))
+                .maturityAmount(BigDecimal.valueOf(1050))
+                .build());
+
+        Mockito.when(customerProductRepository.findCustomerProductMappingsById(Mockito.eq(1L), Mockito.eq(2L))).thenReturn(customerProductMappings);
+
+        Mockito.when(productRepository.findById(Mockito.eq(2L))).thenReturn(Optional.empty());
+
+        Assertions.assertThrows(ProductNotFoundException.class, () -> {
+            productService.getCustomerProducts(1L, 2L);
+        });
     }
 }
