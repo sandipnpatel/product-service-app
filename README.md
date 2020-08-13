@@ -45,3 +45,4 @@ Execute command 'java -jar target/product-service-app-2008.00.00-SNAPSHOT.jar' f
 9. Containerization and Integration with Orchestration tool.
 10. Integration with Kibana or Dynatrace.
 11. Java-doc.
+12. Introduce rate-limiting.
