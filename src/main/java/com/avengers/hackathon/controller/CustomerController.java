@@ -43,7 +43,7 @@ public class CustomerController {
     }
 
     @ApiOperation(value = "Get Customer products")
-    @GetMapping(value = "/{customerId}/product/{productId}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(value = "/{customerId}/products/{productId}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<List<CustomerProduct>> getCustomerProducts(@NonNull @PathVariable Long customerId,
                                                                      @NonNull @PathVariable Long productId) {
         List<CustomerProduct> customerProducts = productService.getCustomerProducts(customerId, productId);

@@ -1,7 +1,9 @@
 [
   {
-    "id":11,
-    "name":"p_payments_account",
+    "id":12,
+    "customerId":1,
+    "productId":11,
+    "productName":"p_payments_account",
     "accountNumber":"1234567811",
     "interestRate":1.8,
     "amount":11000,

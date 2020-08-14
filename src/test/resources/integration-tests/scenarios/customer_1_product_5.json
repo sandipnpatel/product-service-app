@@ -1,10 +1,22 @@
 [
   {
     "id":5,
-    "name":"p_deposit_savings",
+    "customerId":1,
+    "productId":5,
+    "productName":"p_deposit_savings",
     "accountNumber":"1234567894",
     "interestRate":5.0,
     "amount":5000,
     "maturityAmount":5150
+  },
+  {
+    "id":6,
+    "customerId":1,
+    "productId":5,
+    "productName":"p_deposit_savings",
+    "accountNumber":"1234567894",
+    "interestRate":5.0,
+    "amount":20000,
+    "maturityAmount":20600
   }
 ]

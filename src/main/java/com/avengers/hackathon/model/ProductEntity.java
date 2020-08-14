@@ -23,10 +23,13 @@ public class ProductEntity {
     @Id
     @Column(name = "ID")
     private long id;
+
     @Column(name = "PRODUCT_GROUP")
     private String productGroup;
+
     @Column(name = "NAME")
     private String name;
+
     @Column(name = "INTEREST_RATE")
     private BigDecimal interestRate;
 }

@@ -1,7 +1,9 @@
 [
   {
-    "id":13,
-    "name":"p_quarterly_limit",
+    "id":14,
+    "customerId":1,
+    "productId":13,
+    "productName":"p_quarterly_limit",
     "accountNumber":"1234567813",
     "interestRate":2.1,
     "amount":13000,

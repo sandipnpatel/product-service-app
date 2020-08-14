@@ -1,7 +1,9 @@
 [
   {
     "id":4,
-    "name":"p_bonus_savings",
+    "customerId":1,
+    "productId":4,
+    "productName":"p_bonus_savings",
     "accountNumber":"1234567893",
     "interestRate":4.5,
     "amount":4000,

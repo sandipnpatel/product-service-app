@@ -73,7 +73,7 @@ class CustomerControllerIntegrationTest {
 
         MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
 
-        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:" + port + "/v1/customer/1/product/4")
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:" + port + "/v1/customer/1/products/4")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .accept(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(MockMvcResultHandlers.print())
@@ -86,7 +86,7 @@ class CustomerControllerIntegrationTest {
 
         MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
 
-        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:" + port + "/v1/customer/1/product/0")
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:" + port + "/v1/customer/1/products/0")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .accept(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(MockMvcResultHandlers.print())
@@ -99,7 +99,7 @@ class CustomerControllerIntegrationTest {
 
         MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
 
-        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:" + port + "/v1/customer/1/product/0")
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:" + port + "/v1/customer/1/products/0")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .accept(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(MockMvcResultHandlers.print())

@@ -44,37 +44,51 @@ class ProductServiceApplicationSpec extends Specification {
                 .getResponse().getContentAsString()
 
         then:
-        JsonNode expected = objectMapper.readTree(new FileReader(new ClassPathResource("integration-tests/scenarios/$responseFileName").getFile()))
-        JsonNode actual = objectMapper.readTree(responseBody)
-        Assert.assertEquals(actual, expected)
+        if (statusCode == 200) {
+            JsonNode expected = objectMapper.readTree(new FileReader(new ClassPathResource("integration-tests/scenarios/$responseFileName").getFile()))
+            JsonNode actual = objectMapper.readTree(responseBody)
+            Assert.assertEquals(actual, expected)
+        }
 
 
         where:
-        scenario                               | requestUri                  | statusCode | responseFileName
-        "Valid Customer 1 all product request" | "/v1/customer/1/products"   | 200        | "customer_1_products.json"
-        "Valid Customer 2 all product request" | "/v1/customer/2/products"   | 200        | "customer_2_products.json"
-        "Valid Customer 3 all product request" | "/v1/customer/3/products"   | 200        | "customer_3_products.json"
-        "Valid Customer 4 all product request" | "/v1/customer/4/products"   | 200        | "customer_4_products.json"
-        "Valid Customer 1 product 1 request"   | "/v1/customer/1/product/1"  | 200        | "customer_1_product_1.json"
-        "Valid Customer 1 product 2 request"   | "/v1/customer/1/product/2"  | 200        | "customer_1_product_2.json"
-        "Valid Customer 1 product 3 request"   | "/v1/customer/1/product/3"  | 200        | "customer_1_product_3.json"
-        "Valid Customer 1 product 4 request"   | "/v1/customer/1/product/4"  | 200        | "customer_1_product_4.json"
-        "Valid Customer 1 product 5 request"   | "/v1/customer/1/product/5"  | 200        | "customer_1_product_5.json"
-        "Valid Customer 1 product 6 request"   | "/v1/customer/1/product/6"  | 200        | "customer_1_product_6.json"
-        "Valid Customer 1 product 7 request"   | "/v1/customer/1/product/7"  | 200        | "customer_1_product_7.json"
-        "Valid Customer 1 product 8 request"   | "/v1/customer/1/product/8"  | 200        | "customer_1_product_8.json"
-        "Valid Customer 1 product 9 request"   | "/v1/customer/1/product/9"  | 200        | "customer_1_product_9.json"
-        "Valid Customer 1 product 10 request"  | "/v1/customer/1/product/10" | 200        | "customer_1_product_10.json"
-        "Valid Customer 1 product 11 request"  | "/v1/customer/1/product/11" | 200        | "customer_1_product_11.json"
-        "Valid Customer 1 product 12 request"  | "/v1/customer/1/product/12" | 200        | "customer_1_product_12.json"
-        "Valid Customer 1 product 13 request"  | "/v1/customer/1/product/13" | 200        | "customer_1_product_13.json"
-        "Valid Customer 1 product 14 request"  | "/v1/customer/1/product/14" | 200        | "customer_1_product_14.json"
-        "Valid Customer 2 product 1 request"   | "/v1/customer/2/product/1"  | 200        | "customer_2_product_1.json"
-        "Valid Customer 2 product 4 request"   | "/v1/customer/2/product/4"  | 200        | "customer_2_product_4.json"
-        "Valid Customer 2 product 6 request"   | "/v1/customer/2/product/6"  | 200        | "customer_2_product_6.json"
-        "Valid Customer 3 product 7 request"   | "/v1/customer/3/product/7"  | 200        | "customer_3_product_7.json"
-        "Valid Customer 3 product 9 request"   | "/v1/customer/3/product/9"  | 200        | "customer_3_product_9.json"
-        "Valid Customer 4 product 12 request"  | "/v1/customer/4/product/12" | 200        | "customer_4_product_12.json"
+        scenario                                  | requestUri                    | statusCode | responseFileName
+        "Valid Customer 1 all product request"    | "/v1/customer/1/products"     | 200        | "customer_1_products.json"
+        "Valid Customer 2 all product request"    | "/v1/customer/2/products"     | 200        | "customer_2_products.json"
+        "Valid Customer 3 all product request"    | "/v1/customer/3/products"     | 200        | "customer_3_products.json"
+        "Valid Customer 4 all product request"    | "/v1/customer/4/products"     | 200        | "customer_4_products.json"
+        "Invalid Customer 5 all product request"  | "/v1/customer/5/products"     | 400        | ""
+        "Invalid Customer 0 all product request"  | "/v1/customer/0/products"     | 400        | ""
+        "Invalid Customer -1 all product request" | "/v1/customer/-1/products"    | 400        | ""
+        "Invalid Customer X all product request"  | "/v1/customer/X/products"     | 400        | ""
+        "Valid Customer 1 product 1 request"      | "/v1/customer/1/products/1"   | 200        | "customer_1_product_1.json"
+        "Valid Customer 1 product 2 request"      | "/v1/customer/1/products/2"   | 200        | "customer_1_product_2.json"
+        "Valid Customer 1 product 3 request"      | "/v1/customer/1/products/3"   | 200        | "customer_1_product_3.json"
+        "Valid Customer 1 product 4 request"      | "/v1/customer/1/products/4"   | 200        | "customer_1_product_4.json"
+        "Valid Customer 1 product 5 request"      | "/v1/customer/1/products/5"   | 200        | "customer_1_product_5.json"
+        "Valid Customer 1 product 6 request"      | "/v1/customer/1/products/6"   | 200        | "customer_1_product_6.json"
+        "Valid Customer 1 product 7 request"      | "/v1/customer/1/products/7"   | 200        | "customer_1_product_7.json"
+        "Valid Customer 1 product 8 request"      | "/v1/customer/1/products/8"   | 200        | "customer_1_product_8.json"
+        "Valid Customer 1 product 9 request"      | "/v1/customer/1/products/9"   | 200        | "customer_1_product_9.json"
+        "Valid Customer 1 product 10 request"     | "/v1/customer/1/products/10"  | 200        | "customer_1_product_10.json"
+        "Valid Customer 1 product 11 request"     | "/v1/customer/1/products/11"  | 200        | "customer_1_product_11.json"
+        "Valid Customer 1 product 12 request"     | "/v1/customer/1/products/12"  | 200        | "customer_1_product_12.json"
+        "Valid Customer 1 product 13 request"     | "/v1/customer/1/products/13"  | 200        | "customer_1_product_13.json"
+        "Valid Customer 1 product 14 request"     | "/v1/customer/1/products/14"  | 200        | "customer_1_product_14.json"
+        "Valid Customer 2 product 1 request"      | "/v1/customer/2/products/1"   | 200        | "customer_2_product_1.json"
+        "Valid Customer 2 product 4 request"      | "/v1/customer/2/products/4"   | 200        | "customer_2_product_4.json"
+        "Valid Customer 2 product 6 request"      | "/v1/customer/2/products/6"   | 200        | "customer_2_product_6.json"
+        "Valid Customer 3 product 7 request"      | "/v1/customer/3/products/7"   | 200        | "customer_3_product_7.json"
+        "Valid Customer 3 product 9 request"      | "/v1/customer/3/products/9"   | 200        | "customer_3_product_9.json"
+        "Valid Customer 4 product 12 request"     | "/v1/customer/4/products/12"  | 200        | "customer_4_product_12.json"
+        "Invalid Customer 25 product 1 request"   | "/v1/customer/25/products/1"  | 400        | ""
+        "Invalid Customer 0 product 1 request"    | "/v1/customer/0/products/1"   | 400        | ""
+        "Invalid Customer -10 product 1 request"  | "/v1/customer/-10/products/1" | 400        | ""
+        "Invalid Customer c product 1 request"    | "/v1/customer/c/products/1"   | 400        | ""
+        "Invalid Customer 1 product 50 request"   | "/v1/customer/1/products/50"  | 400        | ""
+        "Invalid Customer 1 product 0 request"    | "/v1/customer/1/products/0"   | 400        | ""
+        "Invalid Customer 1 product -7 request"   | "/v1/customer/1/products/-7"  | 400        | ""
+        "Invalid Customer 1 product a request"    | "/v1/customer/1/products/a"   | 400        | ""
 
     }
 

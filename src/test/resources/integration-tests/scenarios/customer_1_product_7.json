@@ -1,7 +1,9 @@
 [
   {
-    "id":7,
-    "name":"p_saving_mortgage",
+    "id":8,
+    "customerId":1,
+    "productId":7,
+    "productName":"p_saving_mortgage",
     "accountNumber":"1234567896",
     "interestRate":5.2,
     "amount":7000,

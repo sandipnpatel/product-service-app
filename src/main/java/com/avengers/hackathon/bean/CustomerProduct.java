@@ -10,7 +10,9 @@ import java.math.BigDecimal;
 public class CustomerProduct {
 
     private Long id;
-    private String name;
+    private Long customerId;
+    private Long productId;
+    private String productName;
     private String accountNumber;
     private BigDecimal interestRate;
     private BigDecimal amount;

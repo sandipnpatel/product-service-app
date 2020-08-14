@@ -1,7 +1,9 @@
 [
   {
-    "id":6,
-    "name":"p_green_savings",
+    "id":18,
+    "customerId":2,
+    "productId":6,
+    "productName":"p_green_savings",
     "accountNumber":"1234557892",
     "interestRate":3.9,
     "amount":75000,

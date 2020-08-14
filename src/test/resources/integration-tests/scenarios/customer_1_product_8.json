@@ -1,7 +1,9 @@
 [
   {
-    "id":8,
-    "name":"p_interest_only_mortgage",
+    "id":9,
+    "customerId":1,
+    "productId":8,
+    "productName":"p_interest_only_mortgage",
     "accountNumber":"1234567897",
     "interestRate":5.3,
     "amount":8000,

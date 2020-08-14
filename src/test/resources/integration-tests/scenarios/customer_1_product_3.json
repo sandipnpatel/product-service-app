@@ -1,7 +1,9 @@
 [
   {
     "id":3,
-    "name":"p_unicef_savings",
+    "customerId":1,
+    "productId":3,
+    "productName":"p_unicef_savings",
     "accountNumber":"1234567892",
     "interestRate":2.5,
     "amount":3000,

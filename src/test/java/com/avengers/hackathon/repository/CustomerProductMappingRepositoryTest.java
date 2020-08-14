@@ -13,7 +13,7 @@ import java.util.List;
 
 @SpringBootTest(classes = ProductServiceApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class CustomerProductRepositoryTest {
+public class CustomerProductMappingRepositoryTest {
 
     @Autowired
     private CustomerProductRepository customerProductRepository;
@@ -21,8 +21,8 @@ public class CustomerProductRepositoryTest {
     @Test
     @DisplayName("Should able to fetch all CustomerProductMapping by customer Id and product Id.")
     public void testFindCustomerProductMappingsById() {
-        List<CustomerProductMapping> customerProductRepositoryList = customerProductRepository.findCustomerProductMappingsById(1L, 1L);
-        Assert.assertEquals(customerProductRepositoryList.size(), 1);
+        List<CustomerProductMapping> customerProductMappingList = customerProductRepository.findCustomerProductMappingsById(1L, 1L);
+        Assert.assertEquals(customerProductMappingList.size(), 1);
     }
 
     @Test

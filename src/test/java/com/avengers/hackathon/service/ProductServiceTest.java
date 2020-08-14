@@ -3,9 +3,7 @@ package com.avengers.hackathon.service;
 import com.avengers.hackathon.bean.CustomerProduct;
 import com.avengers.hackathon.bean.Product;
 import com.avengers.hackathon.bean.ProductGroup;
-import com.avengers.hackathon.exception.InvalidGroupNameException;
-import com.avengers.hackathon.exception.ProductNotFoundException;
-import com.avengers.hackathon.model.CustomerProductId;
+import com.avengers.hackathon.model.Customer;
 import com.avengers.hackathon.model.CustomerProductMapping;
 import com.avengers.hackathon.model.ProductEntity;
 import com.avengers.hackathon.repository.CustomerProductRepository;
@@ -13,7 +11,6 @@ import com.avengers.hackathon.repository.ProductRepository;
 import com.google.common.collect.Lists;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -75,6 +72,9 @@ public class ProductServiceTest {
                         .build());
 
         Assert.assertArrayEquals(expected.toArray(), actual.toArray());
+
+        Mockito.verify(customerProductRepository, Mockito.times(1)).getProductIds(Mockito.eq(1L));
+        Mockito.verify(productRepository, Mockito.times(1)).findAllById(Mockito.eq(productIds));
     }
 
     @Test
@@ -87,6 +87,8 @@ public class ProductServiceTest {
         List<Product> actual = productService.getCustomerProducts(1L);
 
         Assert.assertEquals(0, actual.size());
+
+        Mockito.verify(customerProductRepository, Mockito.times(1)).getProductIds(Mockito.eq(1L));
     }
 
 
@@ -95,7 +97,9 @@ public class ProductServiceTest {
     public void testGetCustomerProducts_shouldReturnCustomerProductsFromRepository() {
 
         List<CustomerProductMapping> customerProductMappings = Lists.newArrayList(CustomerProductMapping.builder()
-                .customerProductId(CustomerProductId.builder().customerId(1L).productId(2L).build())
+                .id(3L)
+                .customer(Customer.builder().id(1L).build())
+                .product(ProductEntity.builder().id(2L).name("p_interest_only_mortgage").interestRate(BigDecimal.valueOf(1.7)).build())
                 .accountNumber("1234567890")
                 .amount(BigDecimal.valueOf(1000))
                 .maturityAmount(BigDecimal.valueOf(1050))
@@ -103,25 +107,22 @@ public class ProductServiceTest {
 
         Mockito.when(customerProductRepository.findCustomerProductMappingsById(Mockito.eq(1L), Mockito.eq(2L))).thenReturn(customerProductMappings);
 
-        Mockito.when(productRepository.findById(Mockito.eq(2L))).thenReturn(Optional.of(ProductEntity.builder()
-                .id(2L)
-                .name("p_interest_only_mortgage")
-                .productGroup("pg_mortgage")
-                .interestRate(BigDecimal.valueOf(1.7))
-                .build()));
-
         List<CustomerProduct> actual = productService.getCustomerProducts(1L, 2L);
 
         List<CustomerProduct> expected = Lists.newArrayList(CustomerProduct.builder()
-                .id(2L)
+                .id(3L)
+                .customerId(1L)
+                .productId(2L)
                 .accountNumber("1234567890")
-                .name("p_interest_only_mortgage")
+                .productName("p_interest_only_mortgage")
                 .amount(BigDecimal.valueOf(1000))
                 .maturityAmount(BigDecimal.valueOf(1050))
                 .interestRate(BigDecimal.valueOf(1.7))
                 .build());
 
         Assert.assertArrayEquals(expected.toArray(), actual.toArray());
+
+        Mockito.verify(customerProductRepository, Mockito.times(1)).findCustomerProductMappingsById(Mockito.eq(1L), Mockito.eq(2L));
     }
 
     @Test
@@ -132,24 +133,8 @@ public class ProductServiceTest {
         List<CustomerProduct> actual = productService.getCustomerProducts(1L, 2L);
 
         Assert.assertEquals(0, actual.size());
+
+        Mockito.verify(customerProductRepository, Mockito.times(1)).findCustomerProductMappingsById(Mockito.eq(1L), Mockito.eq(2L));
     }
 
-    @Test
-    @DisplayName("Should throw ProductNotFoundException if ProductEntity not found from repository..")
-    public void testGetCustomerProducts_shouldThrowProductNotFoundExceptionIfProductsNotFoundFromRepository() {
-        List<CustomerProductMapping> customerProductMappings = Lists.newArrayList(CustomerProductMapping.builder()
-                .customerProductId(CustomerProductId.builder().customerId(1L).productId(2L).build())
-                .accountNumber("1234567890")
-                .amount(BigDecimal.valueOf(1000))
-                .maturityAmount(BigDecimal.valueOf(1050))
-                .build());
-
-        Mockito.when(customerProductRepository.findCustomerProductMappingsById(Mockito.eq(1L), Mockito.eq(2L))).thenReturn(customerProductMappings);
-
-        Mockito.when(productRepository.findById(Mockito.eq(2L))).thenReturn(Optional.empty());
-
-        Assertions.assertThrows(ProductNotFoundException.class, () -> {
-            productService.getCustomerProducts(1L, 2L);
-        });
-    }
 }

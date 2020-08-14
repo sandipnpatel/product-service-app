@@ -1,7 +1,9 @@
 [
   {
-    "id":10,
-    "name":"p_linear_mortgage",
+    "id":11,
+    "customerId":1,
+    "productId":10,
+    "productName":"p_linear_mortgage",
     "accountNumber":"1234567899",
     "interestRate":5.5,
     "amount":10000,

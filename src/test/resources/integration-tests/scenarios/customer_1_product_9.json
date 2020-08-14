@@ -1,7 +1,9 @@
 [
   {
-    "id":9,
-    "name":"p_annuity_mortgage",
+    "id":10,
+    "customerId":1,
+    "productId":9,
+    "productName":"p_annuity_mortgage",
     "accountNumber":"1234567898",
     "interestRate":5.4,
     "amount":9000,

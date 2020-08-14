@@ -1,7 +1,9 @@
 [
   {
-    "id":12,
-    "name":"p_debit_card",
+    "id":13,
+    "customerId":1,
+    "productId":12,
+    "productName":"p_debit_card",
     "accountNumber":"1234567812",
     "interestRate":1.9,
     "amount":12000,

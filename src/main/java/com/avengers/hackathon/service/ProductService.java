@@ -1,18 +1,16 @@
 package com.avengers.hackathon.service;
 
-import com.avengers.hackathon.exception.ProductNotFoundException;
-import com.avengers.hackathon.model.CustomerProductMapping;
-import com.avengers.hackathon.model.ProductEntity;
 import com.avengers.hackathon.bean.CustomerProduct;
 import com.avengers.hackathon.bean.Product;
 import com.avengers.hackathon.bean.ProductGroup;
+import com.avengers.hackathon.model.CustomerProductMapping;
+import com.avengers.hackathon.model.ProductEntity;
 import com.avengers.hackathon.repository.CustomerProductRepository;
 import com.avengers.hackathon.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -32,9 +30,9 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-    public List<CustomerProduct> getCustomerProducts(Long customerId, Long productId) {
+    public List<com.avengers.hackathon.bean.CustomerProduct> getCustomerProducts(Long customerId, Long productId) {
 
-        List<CustomerProductMapping>  customerProductMappings = customerProductRepository.findCustomerProductMappingsById(customerId, productId);
+        List<CustomerProductMapping> customerProductMappings = customerProductRepository.findCustomerProductMappingsById(customerId, productId);
         return customerProductMappings.stream()
                 .map(this::toCustomerProduct)
                 .collect(Collectors.toList());
@@ -42,13 +40,13 @@ public class ProductService {
 
     private CustomerProduct toCustomerProduct(CustomerProductMapping customerProductMapping) {
 
-        Optional<ProductEntity> productEntity = productRepository.findById(customerProductMapping.getCustomerProductId().getProductId());
-
-        return CustomerProduct.builder()
-                .id(customerProductMapping.getCustomerProductId().getProductId())
-                .name(productEntity.map(ProductEntity::getName).orElseThrow(() -> new ProductNotFoundException("Product not found with productId:"+customerProductMapping.getCustomerProductId().getProductId())))
+        return com.avengers.hackathon.bean.CustomerProduct.builder()
+                .id(customerProductMapping.getId())
+                .customerId(customerProductMapping.getCustomer().getId())
+                .productId(customerProductMapping.getProduct().getId())
+                .productName(customerProductMapping.getProduct().getName())
                 .accountNumber(customerProductMapping.getAccountNumber())
-                .interestRate(productEntity.get().getInterestRate())
+                .interestRate(customerProductMapping.getProduct().getInterestRate())
                 .amount(customerProductMapping.getAmount())
                 .maturityAmount(customerProductMapping.getMaturityAmount())
                 .build();
