@@ -30,7 +30,7 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-    public List<com.avengers.hackathon.bean.CustomerProduct> getCustomerProducts(Long customerId, Long productId) {
+    public List<CustomerProduct> getCustomerProducts(Long customerId, Long productId) {
 
         List<CustomerProductMapping> customerProductMappings = customerProductRepository.findCustomerProductMappingsById(customerId, productId);
         return customerProductMappings.stream()
